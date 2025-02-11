@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'MaPolice';
+    src: url('/fonts/IntegralCF-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-maPolice {
+    font-family: 'MaPolice', sans-serif;
+}
