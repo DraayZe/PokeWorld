@@ -1,11 +1,7 @@
 <script setup>
 import {onMounted, ref} from "vue";
 
-const data = ref()
-
-
-
-
+const data = ref([])
 
 onMounted(async () => {
   data.value = await fetch('https://tyradex.vercel.app/api/v1/pokemon')
@@ -26,6 +22,10 @@ onMounted(async () => {
         {{ pokemon.name.fr }}
        {{ pokemon.generation }}
         <img :src="pokemon.sprites.regular" :alt="pokemon.name.fr" class="pokemon-image" />
+        <img :src="pokemon.sprites.shiny" :alt="pokemon.name.fr" class="pokemon-image" />
+        <ul>
+        <li v-for="type in pokemon.types" :key="type.name"> {{type.name}}</li>
+        </ul>
       </li>
     </ul>
   </div>

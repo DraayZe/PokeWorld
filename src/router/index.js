@@ -5,7 +5,7 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            component : () => import('@/View/HomeView.vue')
+            component : () => import('@/View/AccueilView.vue')
         },
         {
             path: '/pokedex',
