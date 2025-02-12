@@ -16,17 +16,17 @@
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
         <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-[#e70022] bg-[#e70022] ">
           <li>
-            <router-link class="text-yellow-400 hover:text-blue-700 sora-500 text-lg " to="/">
+            <router-link class="text-yellow-400 hover:text-blue-700 font-police-regular text-lg " to="/">
               Accueil </router-link>
           </li>
           <li>
-            <router-link class="text-yellow-400 hover:text-blue-700 sora-500 text-lg " :to="{ name: 'pokedex' }"> Pokédex </router-link>
+            <router-link class="text-yellow-400 hover:text-blue-700 font-police-regular text-lg " :to="{ name: 'pokedex' }"> Pokédex </router-link>
           </li>
           <li>
-            <router-link class="text-yellow-400 hover:text-blue-700 sora-500 text-lg " :to="{ name: 'favoris' }"> Favoris </router-link>
+            <router-link class="text-yellow-400 hover:text-blue-700 font-police-regular text-lg " :to="{ name: 'favoris' }"> Favoris </router-link>
           </li>
           <li>
-            <router-link class="text-yellow-400 hover:text-blue-700 sora-500 text-lg " :to="{ name: 'contact' }"> Contact </router-link>
+            <router-link class="text-yellow-400 hover:text-blue-700 font-police-regular text-lg " :to="{ name: 'contact' }"> Contact </router-link>
           </li>
         </ul>
       </div>

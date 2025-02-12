@@ -1,18 +1,29 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Bebas+Neue&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap');
-.sora-500 {
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
+
+@font-face {
+    font-family: 'Police';
+    src: url('../public/fonts/Comfortaa-Bold.ttf') format('truetype');
 }
 
-.sora-100{
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
+@font-face {
+    font-family: 'Police';
+    src: url('../public/fonts/Comfortaa-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Police';
+    src: url('../public/fonts/Comfortaa-Regular.ttf') format('truetype');
+}
+
+.font-police-bold {
+    font-family: 'Police', sans-serif;
+}
+
+.font-police-light {
+    font-family: 'Police', sans-serif;
+}
+
+.font-police-regular {
+    font-family: 'Police', sans-serif;
 }
 
