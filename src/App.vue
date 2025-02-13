@@ -4,9 +4,7 @@ import NavigationView from "@/View/NavigationView.vue";
 
 <template>
   <NavigationView/>
-  <main>
-    <router-view> </router-view>
-  </main>
+  <router-view> </router-view>
  </template>
 
  <style scoped>

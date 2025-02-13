@@ -3,12 +3,12 @@ import ThreeScene from '../components/ThreeScene.vue'
 </script>
 
 <template>
-  <div class=" grid grid-cols-2 ">
-    <div class="flex flex-col justify-center items-center my-70 ">
-      <h2 class="font-police-bold text-4xl font-bold text-center  text-[#e70022] "> Recherche tous tes pokémons préférés avec PokeWorld ! </h2>
-      <p class="text-lg text-center font-police-light text-white py-7 px-8 ">PokeWorld te permet de rechercher les pokémons de toutes les générations la génération, le type et pleins d'autres fonctionnalités !</p>
-      <div>
-        <router-link class="noise bg-blue-700 text-white font-regular px-15 py-3 rounded-sm cursor-pointer text-2xl hover:text-3xl duration-300 ease-in-out " :to="{ name: 'pokedex' }"> Pokédex </router-link>
+  <div class=" grid grid-cols-2 bg-yellow-300 min-h-screen">
+    <div class="flex flex-col justify-center items-center px-20 ">
+      <h2 class="font-police-bold text-4xl font-bold text-center  text-red-500 "> Recherche tous tes pokémons préférés avec PokeWorld ! </h2>
+      <p class="text-lg text-center font-police-light text-black py-7 px-8 ">PokeWorld te permet de rechercher les pokémons de toutes les générations la génération, le type et pleins d'autres fonctionnalités !</p>
+      <div class="hover:scale-110 duration-300 ease-in-out ">
+        <router-link class="noise bg-blue-700 text-white font-regular px-15 py-3 rounded-sm cursor-pointer text-2xl" :to="{ name: 'pokedex' }"> Pokédex </router-link>
       </div>
 
     </div>
@@ -17,12 +17,12 @@ import ThreeScene from '../components/ThreeScene.vue'
     </div>
 
     <div class="flex justify-center items-end row-start-2 col-start-1 ">
-      <p class="text-[#e70022] font-police-bold font-bold ">Projet réalisé par Lenny FERNET</p>
+      <p class="text-black font-police-bold  ">Projet réalisé par Lenny FERNET</p>
     </div>
-    <div class="flex justify-center items-end row-start-2 col-start-2 font-police-regular  ">
-      <bouton class="text-black  px-3 cursor-pointer text-lg ">
+    <div class="flex justify-center items-end row-start-2 col-start-2 ">
+      <div class="text-black  font-police-bold  px-3 cursor-pointer text-lg ">
         Retrouver le projet sur GitHub
-      </bouton>
+      </div>
       <img src="/images/github-logo.png" alt="Github Logo" class="rounded-lg w-8  " />
     </div>
   </div>

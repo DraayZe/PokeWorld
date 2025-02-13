@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref } from "vue";
+import CardPokemon from "@/components/CardPokemon.vue";
 
 const data = ref([]);
 
@@ -12,27 +13,22 @@ onMounted(async () => {
 });
 </script>
 
-
 <template>
-  <div>
-    <h1>Liste des Pokémon</h1>
-    <ul>
-      <li v-for="pokemon in data" :key="pokemon.id">
-        {{ pokemon.name.fr }} / génération :
-       {{ pokemon.generation }}
-        <li><img :src="pokemon.sprites.regular" :alt="pokemon.name.fr" class="pokemon-image" /></li>
-        <ul>
-        <li v-for="type in pokemon.types" :key="type.name"> Type {{type.name}}</li>
-        </ul>
-      </li>
-    </ul>
+  <label for="name">Rechercher votre pokémon préférés:</label>
+  <input type="text" id="name" style="background-color: darkgray"/>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 justify-items-center gap-7 p-10">
+    <card-pokemon
+        v-for="pokemon in data"
+        :key="pokemon.id"
+        :pokemon="pokemon"
+    />
   </div>
 </template>
 
+
+
+
 <style scoped>
 
-.pokemon-image {
-  width: 10%;
-  height: auto;
-}
+
 </style>
