@@ -15,8 +15,8 @@ onMounted(async () => {
 
 <template>
   <label for="name">Rechercher votre pokémon préférés:</label>
-  <input type="text" id="name" style="background-color: darkgray"/>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 justify-items-center gap-7 p-10">
+  <input type="text" id="name" style="background-color: darkgrey"/>
+  <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-items-center gap-7 p-10">
     <card-pokemon
         v-for="pokemon in data"
         :key="pokemon.id"

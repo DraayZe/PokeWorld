@@ -20,7 +20,7 @@ import ThreeScene from '../components/ThreeScene.vue'
       <p class="text-black font-police-bold  ">Projet réalisé par Lenny FERNET</p>
     </div>
     <div class="flex justify-center items-end row-start-2 col-start-2 ">
-      <div class="text-black  font-police-bold  px-3 cursor-pointer text-lg ">
+      <div class="text-black font-police-bold  px-3 cursor-pointer text-lg ">
         Retrouver le projet sur GitHub
       </div>
       <img src="/images/github-logo.png" alt="Github Logo" class="rounded-lg w-8  " />
@@ -36,7 +36,7 @@ import ThreeScene from '../components/ThreeScene.vue'
   border-radius: 10px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 
 }
 
@@ -45,7 +45,7 @@ import ThreeScene from '../components/ThreeScene.vue'
   position: absolute;
   inset: 0;
   background: url(https://grainy-gradients.vercel.app/noise.svg);
-  opacity: 0.2;
+  opacity: 0.3;
 }
 
 

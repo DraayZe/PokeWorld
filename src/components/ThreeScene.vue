@@ -24,8 +24,10 @@ onMounted(() => {
 
   // Contrôles de la caméra
   const controls = new OrbitControls(camera, renderer.domElement);
-  controls.minDistance = 8; // Distance minimale de la caméra
-  controls.maxDistance = 10; // Distance maximale de la caméra
+   controls.minDistance = 8;
+   // controls.maxDistance = 10;
+  controls.enableZoom = false;
+
 
   // Lumières
 
@@ -44,6 +46,12 @@ onMounted(() => {
   lumierebas.position.set(0, -1, -3);
   lumierebas.castShadow = true;
   scene.add(lumierebas);
+
+  const lumieredevant = new THREE.DirectionalLight(0xffffff, 3);
+  lumieredevant.position.set(0, 3, 5);
+  lumieredevant.castShadow = true;
+  scene.add(lumieredevant);
+
 
 
   // Charger un modèle GLTF
@@ -79,5 +87,11 @@ onMounted(() => {
 .canvas-container {
   width: 100%;
   height: 80vh;
+  cursor: grab;
 }
+
+.canvas-container:active {
+  cursor: grabbing;
+}
+
 </style>

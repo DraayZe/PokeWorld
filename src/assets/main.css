@@ -2,17 +2,17 @@
 
 @font-face {
     font-family: 'Police';
-    src: url('../public/fonts/Comfortaa-Bold.ttf') format('truetype');
+    src: url('../fonts/Comfortaa-Bold.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Police';
-    src: url('../public/fonts/Comfortaa-Light.ttf') format('truetype');
+    src: url('../fonts/Comfortaa-Light.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Police';
-    src: url('../public/fonts/Comfortaa-Regular.ttf') format('truetype');
+    src: url('../fonts/Comfortaa-Regular.ttf') format('truetype');
 }
 
 .font-police-bold {
