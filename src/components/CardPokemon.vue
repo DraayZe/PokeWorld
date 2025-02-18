@@ -10,7 +10,6 @@ const { elementX, elementY, isOutside, elementHeight, elementWidth } = useMouseI
 const cardTransform = computed(() => {
   const MAX_ROTATION = 15;
 
-  // Vérifie si l'élément a une taille définie pour éviter des erreurs
   if (!elementHeight.value || !elementWidth.value) return '';
 
   const rX = (MAX_ROTATION / 2 - (elementY.value / elementHeight.value) * MAX_ROTATION).toFixed(2);
@@ -26,35 +25,47 @@ const props = defineProps({
   pokemon: Object
 });
 
-// Définition des couleurs en fonction du type
-const typeColors = {
-  Feu: 'bg-red-400',
-  Eau: 'bg-blue-400',
-  Plante: 'bg-green-400',
-  Électrik: 'bg-yellow-400',
-  Insecte: 'bg-lime-500',
-  Roche: 'bg-stone-400',
-  Sol: 'bg-amber-600',
-  Combat: 'bg-orange-600',
-  Spectre: 'bg-purple-500',
-  Psy: 'bg-pink-400',
-  Ténèbres: 'bg-gray-700',
-  Dragon: 'bg-indigo-400',
-  Acier: 'bg-slate-400',
-  Vol: 'bg-cyan-400',
-  Poison: 'bg-fuchsia-500',
-  Glace: 'bg-sky-300',
-  Fée: 'bg-pink-200',
-  Normal: 'bg-gray-400',
+// Mapping des types en codes couleur hexadécimaux
+const typeColorHex = {
+  Feu: '#F08030',
+  Eau: '#6890F0',
+  Plante: '#78C850',
+  Électrik: '#F8D030',
+  Insecte: '#A8B820',
+  Roche: '#B8A038',
+  Sol: '#E0C068',
+  Combat: '#C03028',
+  Spectre: '#705898',
+  Psy: '#F85888',
+  Ténèbres: '#705848',
+  Dragon: '#7038F8',
+  Acier: '#B8B8D0',
+  Vol: '#ADD8E6',
+  Poison: '#A040A0',
+  Glace: '#98D8D8',
+  Fée: '#EE99AC',
+  Normal: '#A8A878'
 };
 
-const mainTypeColor = computed(() => {
+// Computed property qui retourne le style de background
+const backgroundStyle = computed(() => {
   if (!props.pokemon || !props.pokemon.types?.length) {
-    return 'bg-gray-400';
+    // Couleur par défaut si aucune information
+    return { backgroundColor: typeColorHex.Normal };
   }
 
-  const firstTypeName = props.pokemon.types[0].name;
-  return typeColors[firstTypeName] || 'bg-gray-400';
+  if (props.pokemon.types.length === 1) {
+    const firstTypeName = props.pokemon.types[0].name;
+    return { backgroundColor: typeColorHex[firstTypeName] || typeColorHex.Normal };
+  }
+
+  if (props.pokemon.types.length >= 2) {
+    const firstTypeName = props.pokemon.types[0].name;
+    const secondTypeName = props.pokemon.types[1].name;
+    return {
+      background: `linear-gradient(135deg, ${typeColorHex[firstTypeName] || typeColorHex.Normal}, ${typeColorHex[secondTypeName] || typeColorHex.Normal})`
+    };
+  }
 });
 </script>
 
@@ -70,16 +81,17 @@ const mainTypeColor = computed(() => {
       <h3 class="bg-[#1E1E1E] text-white text-center font-police-regular px-4 py-1 truncate rounded-2xl">
         {{ props.pokemon.name.fr }}
       </h3>
-      <p class="text-center mt-1 font-police-light text-sm py-2 ">#{{ props.pokemon.pokedex_id }}</p>
-      <div class="flex justify-center mb-1">
-        <div v-for="type in props.pokemon.types" :key="type.name" class="p-1">
-          <img :src="type.image" :alt="type.name" class="h-7" />
-        </div>
+      <p class="text-center mt-1 font-police-light text-sm py-2">#{{ props.pokemon.pokedex_id }}</p>
+      <div class="flex justify-center ">
+        <router-link :to="{name: 'pokemon', params: {pokemon: props.pokemon.pokedex_id}}" class="bg-yellow-300 rounded-md text-white px-4 font-police-bold " >Détails</router-link>
       </div>
     </div>
 
-    <!-- Partie droite (image) -->
-    <div :class="[mainTypeColor, 'flex items-center justify-center rounded-r-md w-34 h-full']">
+    <!-- Partie droite (image) avec background dynamique -->
+    <div
+        :style="backgroundStyle"
+        class="flex items-center justify-center rounded-r-md w-34 h-full"
+    >
       <img
           :src="props.pokemon.sprites.regular"
           :alt="props.pokemon.name.fr"
