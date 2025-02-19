@@ -83,7 +83,7 @@ const backgroundStyle = computed(() => {
       </h3>
       <p class="text-center mt-1 font-police-light text-sm py-2">#{{ props.pokemon.pokedex_id }}</p>
       <div class="flex justify-center ">
-        <router-link :to="{name: 'pokemon', params: {pokemon: props.pokemon.pokedex_id}}" class="bg-yellow-300 rounded-md text-white px-4 font-police-bold " >Détails</router-link>
+        <router-link :to="{name: 'pokemon', params: {pokemon: props.pokemon.pokedex_id}}" class="bg-yellow-300 rounded-md text-white px-4 font-police-bold hover:scale-110 duration-300 ease-in-out " >Détails</router-link>
       </div>
     </div>
 

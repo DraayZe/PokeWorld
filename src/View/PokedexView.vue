@@ -55,32 +55,23 @@ const resetFiltre = () => {
 </script>
 
 <template>
-  <label for="name">Rechercher votre Pokémon préféré :</label>
-  <input
-      v-model="recherche"
-      type="text"
-      id="name"
-      class="border"
-      placeholder="Rechercher"
-  />
-
-  <div class="flex gap-2 my-4 flex-wrap">
-    <button @click="resetFiltre" class="px-3 py-1 bg-gray-300 rounded">
-      Tous
-    </button>
-    <button
-        v-for="type in types"
-        :key="type"
-        @click="filtrerParType(type)"
-        class="px-3 py-1 rounded"
-        :class="typeFiltre === type ? 'bg-blue-500 text-white' : 'bg-gray-300'"
-    >
-      {{ type }}
-    </button>
+  <div class="flex justify-center mt-6">
+    <input v-model="recherche" type="text" class="border-2 rounded-md border-blue-700 w-4xl pl-2 " placeholder="Rechercher votre pokémon préféré" />
   </div>
 
-  <!-- Affichage des cartes -->
-  <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-items-center gap-7 p-10">
+  <div class="flex justify-center gap-2 my-4 flex-wrap">
+    <button @click="resetFiltre" class="px-3 py-1 bg-gray-300 rounded cursor-pointer">
+      Tous
+    </button>
+    <button v-for="type in types" :key="type" @click="filtrerParType(type)"
+            class="px-3 py-1 rounded cursor-pointer"
+            :class="typeFiltre === type ? 'bg-blue-700 text-white' : 'bg-[#1E1E1E] text-white'">
+      {{ type }}
+    </button>
+
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 justify-items-center gap-7 p-4">
     <card-pokemon
         v-for="pokemon in filteredPokemons"
         :key="pokemon.id"
