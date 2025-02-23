@@ -20,9 +20,10 @@ import ThreeScene from '../components/ThreeScene.vue'
       <p class="text-black font-police-bold  ">Projet réalisé par Lenny FERNET</p>
     </div>
     <div class="flex justify-center items-end row-start-2 col-start-2 ">
-      <div class="text-black font-police-bold  px-3 cursor-pointer text-lg ">
+      <a href="https://github.com/DraayZe/PokeWorld" target="_blank" class="text-black font-police-bold px-3 cursor-pointer text-lg">
         Retrouver le projet sur GitHub
-      </div>
+      </a>
+
       <img src="/images/github-logo.png" alt="Github Logo" class="rounded-lg w-8  " />
     </div>
   </div>

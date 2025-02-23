@@ -18,9 +18,9 @@ const router = createRouter({
             name: 'favoris',
         },
         {
-            path : '/contact',
-            component : () => import('@/View/ContactView.vue'),
-            name: 'contact',
+            path : '/about',
+            component : () => import('@/View/AProposView.vue'),
+            name: 'apropos',
         },
         {
             path : '/fiche-pokemon/:pokemon',

@@ -26,7 +26,7 @@
             <router-link class="text-blue-700 font-police-regular font-bold text-lg " :to="{ name: 'favoris' }"> Favoris </router-link>
           </li>
           <li>
-            <router-link class="text-blue-700 font-police-regular font-bold text-lg " :to="{ name: 'contact' }"> Contact </router-link>
+            <router-link class="text-blue-700 font-police-regular font-bold text-lg " :to="{ name: 'apropos' }"> À Propos </router-link>
           </li>
         </ul>
       </div>

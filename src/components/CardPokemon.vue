@@ -1,6 +1,8 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { useMouseInElement } from '@vueuse/core';
+import { usePokemonBackground } from '@/composables/usePokemonBackground';
+import { watch, toRef } from 'vue';
 
 const target = ref(null);
 
@@ -25,49 +27,13 @@ const props = defineProps({
   pokemon: Object
 });
 
-// Mapping des types en codes couleur hexadécimaux
-const typeColorHex = {
-  Feu: '#F08030',
-  Eau: '#6890F0',
-  Plante: '#78C850',
-  Électrik: '#F8D030',
-  Insecte: '#A8B820',
-  Roche: '#B8A038',
-  Sol: '#E0C068',
-  Combat: '#C03028',
-  Spectre: '#705898',
-  Psy: '#F85888',
-  Ténèbres: '#705848',
-  Dragon: '#7038F8',
-  Acier: '#B8B8D0',
-  Vol: '#ADD8E6',
-  Poison: '#A040A0',
-  Glace: '#98D8D8',
-  Fée: '#EE99AC',
-  Normal: '#A8A878'
-};
+// Création d'une ref réactive pour suivre les changements du Pokémon
+const pokemonRef = toRef(props, 'pokemon');
 
-// Computed property qui retourne le style de background
-const backgroundStyle = computed(() => {
-  if (!props.pokemon || !props.pokemon.types?.length) {
-    // Couleur par défaut si aucune information
-    return { backgroundColor: typeColorHex.Normal };
-  }
-
-  if (props.pokemon.types.length === 1) {
-    const firstTypeName = props.pokemon.types[0].name;
-    return { backgroundColor: typeColorHex[firstTypeName] || typeColorHex.Normal };
-  }
-
-  if (props.pokemon.types.length >= 2) {
-    const firstTypeName = props.pokemon.types[0].name;
-    const secondTypeName = props.pokemon.types[1].name;
-    return {
-      background: `linear-gradient(135deg, ${typeColorHex[firstTypeName] || typeColorHex.Normal}, ${typeColorHex[secondTypeName] || typeColorHex.Normal})`
-    };
-  }
-});
+// Utilisation du composable pour générer le background dynamique
+const { backgroundStyle } = usePokemonBackground(pokemonRef);
 </script>
+
 
 <template>
   <!-- On ajoute ref="target" pour que useMouseInElement suive cet élément -->
