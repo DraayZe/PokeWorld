@@ -1,9 +1,33 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { useRoute } from "vue-router";
-const route = useRoute();
 
+const route = useRoute();
 const pokemon = ref(null);
+const favoris = ref(JSON.parse(localStorage.getItem("favoris")) || []);
+
+// Vérifie si le Pokémon est déjà dans les favoris
+const isFavori = computed(() => {
+  return favoris.value.some(fav => fav.id === pokemon.value?.pokedex_id);
+});
+
+// Ajouter ou supprimer des favoris
+const toggleFavori = () => {
+  if (!pokemon.value) return;
+
+  if (isFavori.value) {
+    favoris.value = favoris.value.filter(fav => fav.id !== pokemon.value.pokedex_id);
+  } else {
+    favoris.value.push({
+      id: pokemon.value.pokedex_id,
+      name: pokemon.value.name.fr,
+      sprite: pokemon.value.sprites.regular
+    });
+  }
+
+  // Sauvegarde dans le localStorage
+  localStorage.setItem("favoris", JSON.stringify(favoris.value));
+};
 
 onMounted(async () => {
   try {
@@ -25,6 +49,16 @@ onMounted(async () => {
 
     <h3 class="text-3xl font-semibold text-center text-blue-600">{{ pokemon.name.fr }}</h3>
     <h4 class="text-xl text-center text-gray-500 mb-4">Génération: {{ pokemon.generation }}</h4>
+
+    <!-- Bouton Favoris -->
+    <div class="flex justify-center my-4">
+      <button
+          @click="toggleFavori"
+          class="px-4 py-2 rounded-full text-white text-lg font-semibold transition cursor-pointer"
+          :class="isFavori ? 'bg-red-500 hover:bg-red-600' : 'bg-gray-500 hover:bg-gray-600'">
+        {{ isFavori ? 'Retirer des Favoris ❤️' : 'Ajouter aux Favoris 🤍' }}
+      </button>
+    </div>
 
     <div class="mb-4">
       <h5 class="font-medium text-lg text-gray-700 mb-2">Types:</h5>
@@ -83,8 +117,9 @@ onMounted(async () => {
     <div v-else class="mb-4">
       Aucune évolution
     </div>
-
-    <router-link class="text-blue-700 font-police-regular font-bold text-lg " :to="{ name: 'pokedex' }"> Pokédex </router-link>
+    <div class="flex justify-center">
+      <router-link class="text-white bg-blue-700 font-police-regular font-bold text-lg border rounded-sm p-2" :to="{ name: 'pokedex' }"> Retour au Pokédex </router-link>
+    </div>
   </div>
 
   <div v-else class="flex justify-center items-center h-screen">
